@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <label for="email">Enter Email</label>
+        <input id="email" type="text" name="email">
+        <button type="button" onclick="subscribe()">Lets Go</button>
+    </form>
+    <script>
+        function subscribe() {
+            let email = document.getElementById("email").value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+            xhttp.open("POST", "subscribe");
+            xhttp.setRequestHeader("Content-type", "application/json");
+            const payload = { email };
+            xhttp.send(JSON.stringify(payload));
+        }
+    </script>
+</body>
+
+</html>
